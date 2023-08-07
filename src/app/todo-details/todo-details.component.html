@@ -1,0 +1,13 @@
+<div class="mt-3">
+
+  <app-alert *ngIf="errorMessage" [errorMessage]="errorMessage" (clearMessage)="clearErrorMessage()"></app-alert>
+
+  <div *ngIf="todo && !errorMessage">
+    <p>Treśc zadania: {{ todo.name }}</p>
+    <p>Czy zadanie zostało ukończone: {{ todo.isComplete ? 'tak' : 'nie'}}</p>
+
+    <p>Przejdź do kolejnego zadania lub wróć do poprzedniej strony:</p>
+    <button class="btn btn-sm btn-info mx-2" (click)="navigateBack()">Powrót</button>
+    <button class="btn btn-sm btn-info" (click)="navigateToNextTodo()">Następne zadanie</button>
+  </div>
+</div>

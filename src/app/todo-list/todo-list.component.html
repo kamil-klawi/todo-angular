@@ -1,0 +1,28 @@
+<app-add-todo-form (addTodo)="addTodo($event)"></app-add-todo-form>
+
+<app-alert *ngIf="errorMessage" [errorMessage]="errorMessage" (clearMessage)="clearErrorMessage()"></app-alert>
+
+<div class="mt-5">
+  <h4>Zadania:</h4>
+  <ul class="list-group todos-list" *ngIf="todos.length > 0">
+    <ng-container *ngFor="let todo of todos; index as i">
+      <app-todo [todo]="todo" [i]="i" [id]="todo.id" (delete)="deleteTodo(todo.id)" (changeStatus)="changeTodoStatus($event, todo)"></app-todo>
+    </ng-container>
+  </ul>
+  <h5 *ngIf="todos.length === 0">Aktualnie brak zadań</h5>
+<!--  <ng-template #noTask>Aktualnie brak zadań</ng-template>-->
+</div>
+
+<div class="mt-5">
+  <h4>Child routes:</h4>
+  <ul>
+    <li>
+      <a routerLink="/todo/child-a">Child-a</a>
+    </li>
+    <li>
+      <a routerLink="/todo/child-b">Child-b</a>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>
